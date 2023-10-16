@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Clas member information</title>
+</head>
+<body>
+    <h1>Enter class member information</h1>
+    <form action="">
+        <label for="firt_name">Firt Name</label>
+        <input type="text" id="first_name" name="first_name" required>
+        <br>
+        <br>
+
+        <label for="last_name">Last Name</label>
+        <input type="text" id="last_name" name="last_name" required>
+        <br>
+        <br>
+
+        <label for="sex">Sex:</label>
+        <input type="radio" id="sex_male" name="sex" value="Male"> Male
+        <input type="radio" name="sex_female" id="sex" value="Female"> Female
+        <br>
+        <br>
+
+        <label for="birth_date">Date of Birth</label>
+        <input type="date" id="birth_date" name="birth_date" required>
+        <br>
+        <br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <div id="display_Data">
+      <h2>List of class members</h2>  
+      <table>
+        <thead>
+            <tr>
+                <th>Firt Name</th>
+                <th>Last Name</th>
+                <th>Sex</th>
+                <th>Date of Birth</th>
+            </tr>
+        </thead>
+
+        <tbody id="data_list"></tbody>
+      </table>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
