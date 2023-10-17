@@ -1,0 +1,2 @@
+-Khi chạy code Php của file func_price.php và truy cập trang web qua link: http://localhost/func_price.php, chúng ta sẽ thấy các thông điệp và kết quả tính toán hiển thị trên trang. Ví dụ, nếu mua 2 sản phẩm với giá 24$/sản phẩm, tổng số tiền mua hàng sẽ là 53$.
+-> Tương tự, nếu mua 5 sản phẩm với giá 12$/sản phẩm, tổng số tiền mua hàng sẽ là 60$
