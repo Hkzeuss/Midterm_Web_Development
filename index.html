@@ -8,7 +8,12 @@
 </head>
 <body>
     <h1>Enter class member information</h1>
-    <form action="">
+    <form action="process_data.php" method="post">
+        <label for="id_student">Id Student</label>
+        <input type="number" id="id_student" name="id_student" required>
+        <br>    
+        <br>
+
         <label for="firt_name">Firt Name</label>
         <input type="text" id="first_name" name="first_name" required>
         <br>
@@ -21,7 +26,7 @@
 
         <label for="sex">Sex:</label>
         <input type="radio" id="sex_male" name="sex" value="Male"> Male
-        <input type="radio" name="sex_female" id="sex" value="Female"> Female
+        <input type="radio" id="sex_female" name="sex" value="Female"> Female
         <br>
         <br>
 
@@ -38,6 +43,7 @@
       <table>
         <thead>
             <tr>
+                <th>Id Student</th>
                 <th>Firt Name</th>
                 <th>Last Name</th>
                 <th>Sex</th>

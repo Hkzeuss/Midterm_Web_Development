@@ -1,42 +1,38 @@
-document.querySelector('form').addEventListener('submit', function(event) {
-    event.preventDefault();
+// Đảm bảo rằng DOM đã được tải xong
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('form');
+    const dataList = document.getElementById('data_list');
 
-    var firstName = document.getElementById('first_name').value;
-    var lastName = document.getElementById('last_name').value;
-    var sex = document.querySelector('input[name="sex"]:checked').value;
-    var birthDate = document.getElementById('birth_date').value;
+    // Bắt sự kiện gửi biểu mẫu
+    form.addEventListener('submit', function (e) {
+        e.preventDefault(); // Ngăn chặn việc gửi mặc định của biểu mẫu
 
-    var newRow = document.createElement('tr');
-    var firstNameCell = document.createElement('td');
-    firstNameCell.textContent = firstName;
-    var lastNameCell = document.createElement('td');
-    lastNameCell.textContent = lastName;
-    var sexCell = document.createElement('td');
-    sexCell.textContent = sex;
-    var birthDateCell = document.createElement('td');
-    birthDateCell.textContent = birthDate;
+        // Lấy giá trị từ các trường trong biểu mẫu
+        const idStudent = document.getElementById('id_student').value;
+        const firstName = document.getElementById('first_name').value;
+        const lastName = document.getElementById('last_name').value;
+        const sex = document.querySelector('input[name="sex"]:checked').value;
+        const birthDate = document.getElementById('birth_date').value;
 
-    newRow.appendChild(firstNameCell);
-    newRow.appendChild(lastNameCell);
-    newRow.appendChild(sexCell);
-    newRow.appendChild(birthDateCell);
+        // Kiểm tra dữ liệu
+        if (idStudent && firstName && lastName && sex && birthDate) {
+            // Tạo một hàng trong bảng
+            const row = dataList.insertRow();
+            const cell1 = row.insertCell(0);
+            const cell2 = row.insertCell(1);
+            const cell3 = row.insertCell(2);
+            const cell4 = row.insertCell(3);
+            const cell5 = row.insertCell(4);
+            cell1.innerHTML = idStudent;
+            cell2.innerHTML = firstName;
+            cell3.innerHTML = lastName;
+            cell4.innerHTML = sex;
+            cell5.innerHTML = birthDate;
 
-    document.getElementById('data_list').appendChild(newRow);
-
-    // Gửi dữ liệu lên máy chủ
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "process_form.php", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            // Xử lý kết quả nếu cần
+            // Xóa dữ liệu sau khi thêm vào bảng
+            form.reset();
+        } else {
+            alert('Vui lòng điền đầy đủ thông tin.');
         }
-    };
-    xhr.send("firstName=" + firstName + "&lastName=" + lastName + "&sex=" + sex + "&birthDate=" + birthDate);
-
-    // Xóa nội dung của các trường nhập để chuẩn bị cho việc nhập thông tin mới
-    document.getElementById('first_name').value = '';
-    document.getElementById('last_name').value = '';
-    document.querySelector('input[name="sex"]:checked').checked = false;
-    document.getElementById('birth_date').value = '';
+    });
 });
